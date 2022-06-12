@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>review</title>
+    <!-- favicon -->
+
+    <!-- reset -->
+    <link rel="stylesheet" href="../css/reset.css" />
+    <!-- font -->
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet" />
+    <!-- css -->
+    <link rel="stylesheet" href="../css/main.css" />
+    <!-- js -->
+    <script src="../js/gsap.min.js"></script>
+  </head>
+  <body>
+    <header id="header">
+      <div id="gnb">
+        <ul>
+          <li><a href="#moneyCalc">지폐계산기</a></li>
+          <li><a href="#scoreCalc">학점계산기</a></li>
+          <li><a href="#upDown">Up-Down</a></li>
+          <li><a href="#exchangeCalc">환율계산기</a></li>
+          <li><a href="#bmiCalc">BMI계산기</a></li>
+          <li><a href="#randomColorTable">randomColor</a></li>
+          <li><a href="#dDayCalc">D-day</a></li>
+          <li><a href="#gugudan">구구단</a></li>
+          <li><a href="#lottoGame">로또추첨기</a></li>
+          <li><a href="#wordTyping">영타연습기</a></li>
+          <li><a href="">끝말잇기</a></li>
+          <li><a href="">가위바위보</a></li>
+        </ul>
+      </div>
+    </header>
+    <!-- header end -->
+    <section id="moneyCalc">
+      <div class="container">
+        <h1>money calculator</h1>
+        <div class="contents">
+          <div class="inputBox">
+            <input type="number" name="" id="money" step="1000" min="10" max="100000000000" placeholder="금액을 넣어주세요" />
+            <button class="btn moneyBtn">💰</button>
+            <button class="resetBtn moneyResetBtn">🧹</button>
+          </div>
+          <ul class="moneyList">
+            <dl>
+              <dt class="5millon">오만원권 :</dt>
+              <dd class="fiveMillonPieces"></dd>
+            </dl>
+            <dl>
+              <dt class="millon">만원권 :</dt>
+              <dd class="millonPieces"></dd>
+            </dl>
+            <dl>
+              <dt class="5thousand">오천원권 :</dt>
+              <dd class="fiveThousandPieces"></dd>
+            </dl>
+            <dl>
+              <dt class="thousand">천원권 :</dt>
+              <dd class="thousandPieces"></dd>
+            </dl>
+            <dl>
+              <dt class="5hundred">오백원 :</dt>
+              <dd class="fiveHundredPieces"></dd>
+            </dl>
+            <dl>
+              <dt class="hundred">백원권 :</dt>
+              <dd class="hundredPieces"></dd>
+            </dl>
+            <dl>
+              <dt class="fifty">오십원권 :</dt>
+              <dd class="fiftyPieces"></dd>
+            </dl>
+            <dl>
+              <dt class="ten">십원권 :</dt>
+              <dd class="tenPieces"></dd>
+            </dl>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <!-- moneyCalculator end -->
+    <section id="scoreCalc">
+      <div class="container">
+        <h1>score calculator</h1>
+        <div class="contents">
+          <div class="inputBox">
+            <div class="numberBox"><span>국어 : </span><input type="number" name="" id="kor" min="0" max="100" placeholder="점수" /></div>
+            <div class="numberBox"><span>영어 : </span><input type="number" name="" id="eng" min="0" max="100" placeholder="점수" /></div>
+            <div class="numberBox"><span>수학 : </span><input type="number" name="" id="math" min="0" max="100" placeholder="점수" /></div>
+            <div class="numberBox"><span>과학 : </span><input type="number" name="" id="science" min="0" max="100" placeholder="점수" /></div>
+            <div class="btns">
+              <button class="btn scoreBtn">💯</button>
+              <button class="resetBtn scoreResetBtn">🧹</button>
+            </div>
+          </div>
+          <ul>
+            <dl>
+              <dt>평균 점수 :</dt>
+              <dd class="scoreAverage"></dd>
+            </dl>
+          </ul>
+          <div class="scoreBox"></div>
+        </div>
+      </div>
+    </section>
+    <!-- score end -->
+    <section id="upDown">
+      <div class="container">
+        <h1>up & down(1~100)</h1>
+        <div class="contents">
+          <div class="inputBox">
+            <input type="number" name="" id="userUpDown" min="1" max="100" placeholder="숫자" />
+            <div class="btns">
+              <button class="btn upDownBtn">🎰</button>
+              <button class="resetBtn upDownResetBtn">🧹</button>
+            </div>
+          </div>
+          <div class="upDownResult"></div>
+        </div>
+      </div>
+    </section>
+    <!-- upDown end -->
+    <section id="exchangeCalc">
+      <div class="container">
+        <h1>exchange</h1>
+        <div class="contents">
+          <div class="foreignBox exchangeBox">
+            <div id="foreignCountry"></div>
+            <div class="usd exchangeTxtBox">
+              <h2>미국</h2>
+              <span>USD</span>
+            </div>
+            <div class="foreignDollarBox moneyBox">
+              <input type="number" name="" id="dollarNumber" min="1" value="1" />
+              <div class="exchangeDollar exchangeResult"><span class="dollarText"></span><span>달러</span></div>
+            </div>
+          </div>
+          <div class="korBox exchangeBox">
+            <div class="krw exchangeTxtBox">
+              <h2>대한민국</h2>
+              <span>KRW</span>
+            </div>
+            <div class="krwBox moneyBox">
+              <input type="number" name="" id="krwNumber" min="1250" value="1252.0" />
+              <div class="exchangekrw exchangeResult"><span class="krwText"></span><span>원</span></div>
+            </div>
+          </div>
+          <div class="inputBox">
+            <button class="btn exchangeBtn">💸</button>
+            <button class="resetBtn exchangeResetBtn">🧹</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- exchange end -->
+    <section id="bmiCalc">
+      <div class="container">
+        <h1>체질량지수</h1>
+        <div class="contents">
+          <div class="inputBox">
+            <div class="bmiBox">
+              <div class="heightBox hwBox"><span>신장 </span><input type="number" name="" id="height" placeholder="키" min="10" max="300" />cm</div>
+              <div class="weightBox hwBox"><span>체중 </span><input type="number" name="" id="weight" placeholder="몸무게" min="5" max="300" />kg</div>
+            </div>
+            <div class="btns">
+              <button class="btn bmiBtn">🧮</button>
+              <button class="resetBtn bmiResetBtn">🧹</button>
+            </div>
+          </div>
+          <ul>
+            <dl>
+              <dt>비만도 결과</dt>
+              <dd class="bmiResult"></dd>
+            </dl>
+            <dl>
+              <dt>BMI 지수</dt>
+              <dd class="bmiIdx"></dd>
+            </dl>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <!-- bmiCalc end -->
+    <section id="randomColorTable">
+      <div class="container">
+        <h1>random Color Table</h1>
+        <div class="contents">
+          <div class="inputBox">
+            <input type="number" name="" id="row" min="1" max="10" placeholder="가로" />
+            <input type="number" name="" id="column" min="1" max="10" placeholder="세로" />
+            <div class="btns">
+              <button class="btn colorBtn">📱</button>
+              <button class="resetBtn colorResetBtn">🧹</button>
+            </div>
+          </div>
+          <div class="colorBox">
+            <table>
+              <tbody class="tbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- randomColorTable end -->
+    <section id="dDayCalc">
+      <div class="container">
+        <h1>D-day calculator</h1>
+        <div class="contents">
+          <div class="inputBox">
+            <input type="date" name="" id="calendar" />
+            <div class="btns">
+              <button class="btn dDayBtn">🗓️</button>
+              <button class="resetBtn dDayResetBtn">🧹</button>
+            </div>
+          </div>
+          <div class="todayBox"></div>
+          <div class="dDayBox"></div>
+        </div>
+      </div>
+    </section>
+    <!-- dDayCalc end -->
+    <section id="gugudan">
+      <div class="container">
+        <h1>구구단</h1>
+        <div class="contents">
+          <div class="inputBox">
+            <input type="number" id="gugudanUserNumber" min="2" max="9" placeholder="단" />
+            <div class="btns">
+              <button class="btn gugudanBtn">✏️</button>
+              <button class="resetBtn gugudanResetBtn">🧹</button>
+            </div>
+          </div>
+        </div>
+        <table>
+          <tbody class="gugudanBody"></tbody>
+        </table>
+      </div>
+    </section>
+    <!-- gugudan end -->
+    <section id="lottoGame">
+      <div class="container">
+        <h1>lotto</h1>
+        <div class="contents">
+          <div class="radioBox">
+            <label for="lotto01"><input type="radio" name="lotto" class="radio" id="lotto01" value="1" /><span>1️⃣</span></label>
+            <label for="lotto02"><input type="radio" name="lotto" class="radio" id="lotto02" value="2" /><span>2️⃣</span></label>
+            <label for="lotto03"><input type="radio" name="lotto" class="radio" id="lotto03" value="3" /><span>3️⃣</span></label>
+            <label for="lotto04"><input type="radio" name="lotto" class="radio" id="lotto04" value="4" /><span>4️⃣</span></label>
+            <label for="lotto05"><input type="radio" name="lotto" class="radio" id="lotto05" value="5" /><span>5️⃣</span></label>
+          </div>
+          <div class="paper"></div>
+        </div>
+      </div>
+    </section>
+    <!-- lottoGame end-->
+    <section id="wordTyping">
+      <div class="container">
+        <h1>wordTyping</h1>
+        <div class="contents">
+          <div class="randomWordBox"></div>
+          <div class="wordTypingCountBox"></div>
+          <div class="inputBox">
+            <input type="text" class="player" />
+          </div>
+          <div class="cover">
+            <div class="timeBox"></div>
+            <button class="wordTimeBtn">RESTART</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- wordTyping end -->
+    <!-- js -->
+    <script src="../js/money.js"></script>
+    <script src="../js/score.js"></script>
+    <script src="../js/upDown.js"></script>
+    <script src="../js/exchange.js"></script>
+    <script src="../js/bmi.js"></script>
+    <script src="../js/randomColor.js"></script>
+    <script src="../js/dDay.js"></script>
+    <script src="../js/gugudan.js"></script>
+    <script src="../js/lotto.js"></script>
+    <script src="../js/wordTyping.js"></script>
+  </body>
+</html>
