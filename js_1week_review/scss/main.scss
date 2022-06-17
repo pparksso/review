@@ -80,7 +80,6 @@ section {
           background-color: #bcdfff;
           display: inline-block;
           padding: 10px;
-          margin-right: 20px;
           outline: none;
           border: none;
           border-radius: 20px;
@@ -139,6 +138,9 @@ section {
 
 #moneyCalc {
   background-color: #448b69;
+  input {
+    margin-right: 20px;
+  }
 }
 #scoreCalc {
   background-color: #e9cbd1;
@@ -172,6 +174,9 @@ section {
 }
 #upDown {
   background-color: #c0a0db;
+  input {
+    margin-right: 20px;
+  }
   .upDownResult {
     width: 100%;
     height: 100px;
@@ -317,6 +322,9 @@ section {
       }
     }
   }
+  input {
+    margin-right: 20px;
+  }
 }
 #dDayCalc {
   background-color: #ffc8c8;
@@ -327,6 +335,9 @@ section {
   span {
     font-weight: 700;
     font-size: 48px;
+  }
+  input {
+    margin-right: 20px;
   }
 }
 #gugudan {
@@ -347,6 +358,9 @@ section {
         font-weight: 700;
       }
     }
+  }
+  input {
+    margin-right: 20px;
   }
 }
 #lottoGame {
@@ -475,5 +489,43 @@ section {
       font-weight: 700;
       font-size: 20px;
     }
+  }
+}
+#wordRelay {
+  background-color: rgba(227, 216, 252, 0.432);
+  .relayBox {
+    width: 300px;
+    height: 80px;
+    border-radius: 30px;
+    background-color: #d7f1db;
+    font-size: 45px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 80px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+  .countBox {
+    margin: 50px 0;
+    h2 {
+      font-size: 70px;
+      font-weight: 700;
+      color: rgb(15, 79, 255);
+    }
+  }
+  .inputBox {
+    margin: 0 auto;
+    input {
+      width: 300px;
+      height: 70px;
+    }
+  }
+  .relayStart {
+    outline: none;
+    border: none;
+    font-size: 24px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 30px;
   }
 }

@@ -26,7 +26,7 @@ section .container .contents { width: 50%; text-align: center; margin: 50px auto
 
 section .container .contents .inputBox { display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
 
-section .container .contents .inputBox input { background-color: #bcdfff; display: inline-block; padding: 10px; margin-right: 20px; outline: none; border: none; border-radius: 20px; text-align: center; font-size: 30px; font-weight: 700; }
+section .container .contents .inputBox input { background-color: #bcdfff; display: inline-block; padding: 10px; outline: none; border: none; border-radius: 20px; text-align: center; font-size: 30px; font-weight: 700; }
 
 section .container .contents .inputBox button { display: inline-block; outline: none; width: 60px; height: 60px; font-size: 30px; border-radius: 100%; cursor: pointer; }
 
@@ -48,6 +48,8 @@ section .container .contents ul dl dd h2 { font-size: 30px; font-weight: 700; }
 
 #moneyCalc { background-color: #448b69; }
 
+#moneyCalc input { margin-right: 20px; }
+
 #scoreCalc { background-color: #e9cbd1; }
 
 #scoreCalc .inputBox { display: flex; flex-direction: column; justify-content: center; }
@@ -63,6 +65,8 @@ section .container .contents ul dl dd h2 { font-size: 30px; font-weight: 700; }
 #scoreCalc .scoreBox span { font-weight: 700; font-size: 50px; }
 
 #upDown { background-color: #c0a0db; }
+
+#upDown input { margin-right: 20px; }
 
 #upDown .upDownResult { width: 100%; height: 100px; margin-top: 150px; background-color: #e35d7d; font-weight: 700; font-size: 60px; border-radius: 8px; line-height: 100px; border: 2px solid #efc4d0; color: #05172d; box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2); display: none; }
 
@@ -114,11 +118,15 @@ section .container .contents ul dl dd h2 { font-size: 30px; font-weight: 700; }
 
 #randomColorTable .colorBox table td { padding: 15px; color: #fff; text-align: center; vertical-align: middle; }
 
+#randomColorTable input { margin-right: 20px; }
+
 #dDayCalc { background-color: #ffc8c8; }
 
 #dDayCalc .todayBox { font-size: 30px; margin-bottom: 50px; }
 
 #dDayCalc span { font-weight: 700; font-size: 48px; }
+
+#dDayCalc input { margin-right: 20px; }
 
 #gugudan { width: 100%; background-color: #b1d590; }
 
@@ -127,6 +135,8 @@ section .container .contents ul dl dd h2 { font-size: 30px; font-weight: 700; }
 #gugudan table .gugudanBody tr:nth-child(2n + 1) td { background-color: #eee; color: #111; }
 
 #gugudan table .gugudanBody td { padding: 15px; font-weight: 700; }
+
+#gugudan input { margin-right: 20px; }
 
 #lottoGame { background-color: #e35d7d; }
 
@@ -171,3 +181,17 @@ section .container .contents ul dl dd h2 { font-size: 30px; font-weight: 700; }
 #wordTyping .cover .timeBox h2 span { font-weight: 500; font-size: 30px; }
 
 #wordTyping .cover .wordTimeBtn { outline: none; border: none; background-color: #448b69; color: #f8e78b; width: 150px; height: 50px; cursor: pointer; font-weight: 700; font-size: 20px; }
+
+#wordRelay { background-color: rgba(227, 216, 252, 0.432); }
+
+#wordRelay .relayBox { width: 300px; height: 80px; border-radius: 30px; background-color: #d7f1db; font-size: 45px; font-weight: 700; text-align: center; line-height: 80px; margin: 0 auto; box-sizing: border-box; }
+
+#wordRelay .countBox { margin: 50px 0; }
+
+#wordRelay .countBox h2 { font-size: 70px; font-weight: 700; color: #0f4fff; }
+
+#wordRelay .inputBox { margin: 0 auto; }
+
+#wordRelay .inputBox input { width: 300px; height: 70px; }
+
+#wordRelay .relayStart { outline: none; border: none; font-size: 24px; font-weight: 600; cursor: pointer; margin-top: 30px; }

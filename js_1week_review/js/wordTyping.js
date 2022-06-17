@@ -45,6 +45,7 @@ input.addEventListener("keyup", function (e) {
       }
     } else {
       gsap.from(".player", { x: 100, duration: 0.5, ease: "elastic(1,0.3)" });
+      input.value = "";
     }
   }
 });
