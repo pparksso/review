@@ -1,0 +1,93 @@
+.wrap {
+  .container {
+    width: 90%;
+    border: 3px solid #333;
+    margin: 0 auto;
+    margin-top: 70px;
+  }
+}
+section {
+  width: 100vw;
+  height: calc(100vh - 116px);
+  .inner {
+    width: 1640px;
+    margin: 0 auto;
+    padding: 0 20px;
+    .txtBox {
+      span {
+        font-size: 26px;
+        font-weight: 100;
+      }
+      h1 {
+        font-size: 70px;
+        font-family: "Nanum Myeongjo";
+        margin-top: 25px;
+        font-weight: 700;
+      }
+      p {
+        font-size: 17px;
+        margin-top: 25px;
+        line-height: 1.5;
+      }
+      a {
+        display: flex;
+        justify-content: center;
+        padding: 20px 0;
+        margin-top: 65px;
+        width: 290px;
+        border: 1px solid #000;
+        span {
+          font-size: 16px;
+          color: #333;
+          display: flex;
+          font-weight: 400;
+          &:after {
+            content: "\e5cc";
+            font-family: "Material Icons";
+            margin-left: 20px;
+            display: block;
+            font-size: 18px;
+          }
+        }
+      }
+    }
+  }
+}
+
+#main {
+  height: calc(100vh - 186px);
+  position: relative;
+  background-image: url("../images/main/sect01-bg.png");
+  background-size: 4500px auto;
+  background-repeat: no-repeat;
+  background-position: 50% calc(100% + 300px);
+  .inner {
+    .mainTxtBox {
+      min-height: 660px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .back01 {
+      img {
+        width: 650px;
+        height: 439px;
+        position: absolute;
+        z-index: -1;
+        top: -350px;
+        left: -300px;
+      }
+    }
+    .back02 {
+      height: 40%;
+      background-image: url("../images/main/sect01-bg.png");
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+      background-size: contain;
+    }
+    .back03 {
+    }
+    .back04 {
+    }
+  }
+}
