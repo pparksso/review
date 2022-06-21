@@ -34,45 +34,109 @@
     <script src="../js/swiper-bundle.min.js"></script>
   </head>
   <body>
-    <div class="wrap">
+    <header id="header">
       <div class="container">
-        <header id="header">
-          <h2 id="logo">
-            <a href=""><img src="../images/layout/logo.svg" alt="" /></a>
-          </h2>
-          <div id="gnb">
-            <ul>
-              <li><a href="#main">메인</a></li>
-              <li><a href="">회사소개</a></li>
-              <li><a href="">서비스</a></li>
-              <li><a href="">히스토리</a></li>
-              <li><a href="">오시는 길</a></li>
-            </ul>
-          </div>
-          <div class="pickUp">
-            <a href="">수제맥주 Pickup 하기</a>
-          </div>
-        </header>
-        <!-- header end -->
-        <section id="main">
-          <div class="inner">
-            <div class="mainTxtBox txtBox">
-              <span> 진짜 효모가 살아있는 진짜 수제맥주 </span>
-              <h1>루나브루에는 다 있다!</h1>
-              <p>
-                루나브루에는 대한민국의 모든 브루어리의 진짜 수제맥주를 고객에게 전해드리는 <br />
-                국내 유일의 수제맥주 전문 기업입니다.
-              </p>
-              <a href=""> <span>루나브루에서 판매 중인 맥주 보기</span> </a>
-            </div>
-            <div class="back01">
-              <img src="../images/main/sect01-bg03.png" alt="" />
-            </div>
-            <div class="back03"><img src="../images/main/sect01-bg02.png" alt="" /></div>
-            <div class="back04"><img src="../images/main/rice01.gif" alt="" /></div>
-          </div>
-        </section>
+        <h2 id="logo">
+          <a href=""><img src="../images/layout/logo.svg" alt="" /></a>
+        </h2>
+        <div id="gnb">
+          <ul>
+            <li><a href="#main">메인</a></li>
+            <li><a href="">회사소개</a></li>
+            <li><a href="">서비스</a></li>
+            <li><a href="">히스토리</a></li>
+            <li><a href="">오시는 길</a></li>
+          </ul>
+        </div>
+        <div class="pickUp">
+          <a href="">수제맥주 Pickup 하기</a>
+        </div>
       </div>
-    </div>
+    </header>
+    <!-- header end -->
+    <section id="main">
+      <div class="container">
+        <div class="inner">
+          <div class="mainTxtBox txtBox">
+            <span data-aos="fade-right" data-aos-delay="100" data-aos-easing="ease-in-sine" data-aos-duration="1000"> 진짜 효모가 살아있는 진짜 수제맥주 </span>
+            <h1 data-aos="fade-right" data-aos-delay="300" data-aos-easing="ease-in-sine" data-aos-duration="1000">루나브루에는 다 있다!</h1>
+            <p data-aos="fade-right" data-aos-delay="500" data-aos-easing="ease-in-sine" data-aos-duration="1000">
+              루나브루에는 대한민국의 모든 브루어리의 진짜 수제맥주를 고객에게 전해드리는 <br />
+              국내 유일의 수제맥주 전문 기업입니다.
+            </p>
+            <a href="" data-aos="fade-right" data-aos-delay="700" data-aos-easing="ease-in-sine" data-aos-duration="1000"> <span>루나브루에서 판매 중인 맥주 보기</span> </a>
+          </div>
+          <div class="back01">
+            <img src="../images/main/sect01-bg03.png" alt="" id="bg01" />
+          </div>
+          <div class="back02"><img src="../images/main/sect01-bg02.png" alt="" /></div>
+          <div class="back03"><img src="../images/main/rice01.gif" alt="" /></div>
+          <div class="back04"><img src="../images/main/rice03.gif" alt="" /></div>
+        </div>
+      </div>
+    </section>
+    <section id="perchase">
+      <div class="container">
+        <div class="inner">
+          <div class="prechaseWrap">
+            <div class="beerImg swiper">
+              <ul class="swiper-wrapper">
+                <li class="swiper-slide"><img src="../images/main/sect02-slide01.png" alt="" /></li>
+                <li class="swiper-slide"><img src="../images/main/sect02-slide02.png" alt="" /></li>
+                <li class="swiper-slide"><img src="../images/main/sect02-slide03.png" alt="" /></li>
+              </ul>
+            </div>
+            <div class="txtBox">
+              <div class="titleBeg">
+                <p>LUNA BREW COMPANY</p>
+              </div>
+              <span>전국의 수제 맥주를 쉽게 만날 수 있도록</span>
+              <h1>루나브루가 준비했습니다.</h1>
+              <p>우리는 국내 유일의 ‘수제맥주(Craft Beer)’만을 유통·판매하는 <br />국내 3대 테마파크 서울랜드의 자회사 입니다.</p>
+              <a href="">
+                <span>유통 / 구매 문의하기</span>
+              </a>
+              <div class="page">
+                <div class="pageIdx"></div>
+                <div class="pagination">
+                  <button class="prev"></button>
+                  <button class="next"></button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="back05"><img src="../images/main/sect02-bg.png" alt="" /></div>
+          <div class="back06"><img src="../images/main/rice02.gif" alt="" /></div> -->
+        </div>
+      </div>
+    </section>
+    <script>
+      AOS.init();
+
+      const beerImg = document.querySelector(".beerImg");
+      const swiper = new Swiper(beerImg, {
+        effect: "fade",
+        duration: 1,
+        loop: true,
+        slidesPerView: 1,
+      });
+
+      const header = document.querySelector("#header");
+      const main = document.querySelector("#main");
+      const bg01 = document.querySelector("#bg01");
+      window.addEventListener("scroll", function (e) {
+        const scrollY = window.scrollY;
+        e.preventDefault();
+        if (scrollY > 0) {
+          header.classList.add("headerScroll");
+          main.classList.add("mainScroll");
+          bg01.classList.add("active");
+        } else {
+          header.classList.remove("headerScroll");
+          main.classList.remove("mainScroll");
+          bg01.classList.remove("active");
+        }
+      });
+    </script>
   </body>
 </html>

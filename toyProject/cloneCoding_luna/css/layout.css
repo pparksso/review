@@ -3,7 +3,11 @@ body { font-family: "Noto Sans KR", "Nanum Myeongjo", sans-serif; color: #333; b
 
 a { text-decoration: none; color: inherit; }
 
-#header { display: flex; align-items: center; height: 110px; justify-content: space-between; border-bottom: 3px solid #333; background-color: #f5f2e1; }
+#header { margin-top: 70px; position: relative; padding: 0 69px; z-index: 999; box-sizing: border-box; }
+
+#header.headerScroll { position: fixed; margin-top: 0; }
+
+#header .container { height: 110px; display: flex; align-items: center; justify-content: space-between; background-color: #f5f2e1; border-top: 3px solid #333; }
 
 #header .pickUp a { display: block; line-height: 110px; padding: 0 60px; font-size: 22px; font-family: "Nanum Myeongjo"; font-weight: 700; color: #f5f2e1; background-color: #000; }
 

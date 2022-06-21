@@ -1,25 +1,73 @@
-.wrap .container { width: 90%; border: 3px solid #333; margin: 0 auto; margin-top: 70px; }
+.container { width: 90vw; height: 100%; margin: 0 auto; border: 3px solid #333; border-top: none; box-sizing: border-box; }
 
-section { width: 100vw; height: calc(100vh - 116px); }
+section .container .inner { width: 90%; margin: 0 auto; padding: 0 60px; }
 
-section .inner { width: 1640px; margin: 0 auto; padding: 0 20px; }
+section .container .inner .txtBox span { font-size: 26px; font-weight: 100; }
 
-section .inner .txtBox span { font-size: 26px; font-weight: 100; }
+section .container .inner .txtBox h1 { font-size: 70px; font-family: "Nanum Myeongjo"; margin-top: 25px; font-weight: 900; }
 
-section .inner .txtBox h1 { font-size: 70px; font-family: "Nanum Myeongjo"; margin-top: 25px; font-weight: 700; }
+section .container .inner .txtBox p { font-size: 17px; margin-top: 25px; line-height: 1.5; }
 
-section .inner .txtBox p { font-size: 17px; margin-top: 25px; line-height: 1.5; }
+section .container .inner .txtBox a { display: flex; justify-content: center; padding: 20px 0; margin-top: 65px; width: 290px; color: #333; border: 1px solid #000; position: relative; transition: all 0.3s ease; }
 
-section .inner .txtBox a { display: flex; justify-content: center; padding: 20px 0; margin-top: 65px; width: 290px; border: 1px solid #000; }
+section .container .inner .txtBox a:after { content: ""; background-color: #333; position: absolute; bottom: 0; left: 0; height: 0; width: 100%; display: block; transition: all 0.3s ease; }
 
-section .inner .txtBox a span { font-size: 16px; color: #333; display: flex; font-weight: 400; }
+section .container .inner .txtBox a:hover span { color: #f5f2e1; z-index: 1; }
 
-section .inner .txtBox a span:after { content: "\e5cc"; font-family: "Material Icons"; margin-left: 20px; display: block; font-size: 18px; }
+section .container .inner .txtBox a:hover:after { height: 100%; }
 
-#main { height: calc(100vh - 186px); position: relative; background-image: url("../images/main/sect01-bg.png"); background-size: 4500px auto; background-repeat: no-repeat; background-position: 50% calc(100% + 300px); }
+section .container .inner .txtBox a span { font-size: 16px; display: flex; font-weight: 400; transition: all 0.3s ease; }
 
-#main .inner .mainTxtBox { min-height: 660px; display: flex; flex-direction: column; justify-content: center; }
+section .container .inner .txtBox a span:after { content: "\e5cc"; font-family: "Material Icons"; margin-left: 20px; display: block; font-size: 18px; }
 
-#main .inner .back01 img { width: 650px; height: 439px; position: absolute; z-index: -1; top: -350px; left: -300px; }
+#main { height: calc(100vh - 180px); position: relative; background-image: url("../images/main/sect01-bg.png"); background-size: 4500px auto; background-repeat: no-repeat; background-position: 50% calc(100% + 300px); }
 
-#main .inner .back02 { height: 40%; background-image: url("../images/main/sect01-bg.png"); background-repeat: no-repeat; background-position: 50% 50%; background-size: contain; }
+#main.mainScroll { padding-top: 180px; }
+
+#main .inner { position: relative; }
+
+#main .inner .mainTxtBox { min-height: 660px; display: flex; flex-direction: column; justify-content: center; position: relative; z-index: 1; }
+
+#main .inner .back01 img { width: 600px; position: absolute; z-index: -3; top: -150px; left: -250px; transition: all 0.5s ease-in-out; }
+
+#main .inner .back01 img.active { top: -100px; }
+
+#main .inner .back02 img { width: 670px; position: absolute; top: -8%; right: 31%; }
+
+#main .inner .back03 img { width: 25vw; position: absolute; top: -25%; right: 32%; z-index: -2; }
+
+#main .inner .back04 img { width: 10vw; position: absolute; top: 10%; right: 25%; z-index: -1; }
+
+#perchase .container { padding: 350px 0 240px 0; max-height: 100%; }
+
+#perchase .container .inner .prechaseWrap { position: relative; display: flex; max-height: 100%; justify-content: center; }
+
+#perchase .container .inner .prechaseWrap .beerImg { flex-basis: 39%; margin: 0; }
+
+#perchase .container .inner .prechaseWrap .beerImg ul li { width: 485px; max-height: 500px; }
+
+#perchase .container .inner .prechaseWrap .beerImg ul li img { width: 100%; overflow: hidden; }
+
+#perchase .container .inner .prechaseWrap .txtBox { word-break: keep-all; margin-left: 60px; }
+
+#perchase .container .inner .prechaseWrap .txtBox .titleBeg { margin-bottom: 55px; background-image: url("../images/main/badge.png"); width: 310px; height: 60px; background-size: contain; background-position: center center; position: relative; background-repeat: no-repeat; text-align: center; }
+
+#perchase .container .inner .prechaseWrap .txtBox .titleBeg p { font-weight: 700; font-size: 18px; transform: translateY(50%); }
+
+#perchase .container .inner .prechaseWrap .txtBox h1 { font-size: 50px; }
+
+#perchase .container .inner .prechaseWrap .txtBox .page { display: flex; }
+
+#perchase .container .inner .prechaseWrap .txtBox .page .pagination button { outline: none; border: none; background: none; width: auto; height: auto; cursor: pointer; }
+
+#perchase .container .inner .prechaseWrap .txtBox .page .pagination button.prev { transition: all 0.3s ease-in-out; }
+
+#perchase .container .inner .prechaseWrap .txtBox .page .pagination button.prev:after { content: "\f1e6"; font-family: "Material Icons"; font-size: 30px; font-weight: 100; }
+
+#perchase .container .inner .prechaseWrap .txtBox .page .pagination button.prev:hover { transform: translateX(-5px); }
+
+#perchase .container .inner .prechaseWrap .txtBox .page .pagination button.next { transition: all 0.3s ease-in-out; }
+
+#perchase .container .inner .prechaseWrap .txtBox .page .pagination button.next:after { content: "\f1df"; font-family: "Material Icons"; font-size: 30px; font-weight: 100; }
+
+#perchase .container .inner .prechaseWrap .txtBox .page .pagination button.next:hover { transform: translateX(5px); }
