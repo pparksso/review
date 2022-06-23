@@ -44,7 +44,6 @@
     </main>
     <script>
       const dice = $(".dice");
-      // const numbers = $(".face");
 
       const diceArr = [
         { tx: 90, ty: 0 },
@@ -59,15 +58,14 @@
         let randomDice = Math.floor(Math.random() * diceArr.length);
         const tx = diceArr[randomDice].tx;
         const ty = diceArr[randomDice].ty;
-        gsap.fromTo(
-          ".dice",
-          {
-            duration: 2.5,
-            ease: "bounce.in",
-            y: -500,
-          },
-          { duration: 2, ease: "bounce.out", y: 0, rotateX: tx, rotateY: ty }
-        );
+        const tl = gsap.timeline();
+        tl.to(".dice", { y: -500, duration: 1, ease: "power4" }).to(".dice", {
+          duration: 2.5,
+          ease: "bounce",
+          y: 0,
+          rotateX: tx,
+          rotateY: ty,
+        });
       });
     </script>
   </body>
