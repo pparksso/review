@@ -1,0 +1,74 @@
+@import "mixin";
+@import "vars";
+
+body {
+  font-family: "Roboto", "Noto Sans KR", sans-serif;
+  font-size: 16px;
+  color: #111;
+  // prettier-ignore
+  background-color: #fff;
+  overflow: hidden;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+#main {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 100vh;
+  width: 100vw;
+  .scene {
+    height: 100px;
+    width: 100px;
+    border: 1px solid #fff;
+    perspective: 800px;
+    .dice {
+      height: 100%;
+      width: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transform: translateZ(-50px) rotateY(0);
+      // overflow: hidden;
+      .face {
+        width: 100%;
+        height: 100%;
+        color: #fff;
+        background-color: #000;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-weight: 900;
+        font-size: 40px;
+        border: 1px solid #aaa;
+      }
+      .one {
+        transform: rotateX(90deg) translateZ(50px);
+      }
+      .two {
+        transform: rotateY(180deg) translateZ(50px);
+      }
+      .three {
+        transform: rotateY(90deg) translateZ(50px);
+      }
+      .four {
+        transform: rotateY(-90deg) translateZ(50px);
+      }
+      .five {
+        transform: rotateX(0) translateZ(50px);
+      }
+      .six {
+        transform: rotateX(-90deg) translateZ(50px);
+      }
+
+      img {
+        width: 100px;
+        height: 100px;
+      }
+    }
+  }
+}

@@ -55,23 +55,31 @@
     </header>
     <!-- header end -->
     <section id="main">
-      <div class="container">
+      <div class="container" id="mainContainer">
         <div class="inner">
           <div class="mainTxtBox txtBox">
             <span data-aos="fade-right" data-aos-delay="100" data-aos-easing="ease-in-sine" data-aos-duration="1000"> 진짜 효모가 살아있는 진짜 수제맥주 </span>
             <h1 data-aos="fade-right" data-aos-delay="300" data-aos-easing="ease-in-sine" data-aos-duration="1000">루나브루에는 다 있다!</h1>
-            <p data-aos="fade-right" data-aos-delay="500" data-aos-easing="ease-in-sine" data-aos-duration="1000">
+            <p data-aos="fade-right" data-aos-delay="400" data-aos-easing="ease-in-sine" data-aos-duration="1000">
               루나브루에는 대한민국의 모든 브루어리의 진짜 수제맥주를 고객에게 전해드리는 <br />
               국내 유일의 수제맥주 전문 기업입니다.
             </p>
             <a href="" data-aos="fade-right" data-aos-delay="700" data-aos-easing="ease-in-sine" data-aos-duration="1000"> <span>루나브루에서 판매 중인 맥주 보기</span> </a>
           </div>
-          <div class="back01">
-            <img src="../images/main/sect01-bg03.png" alt="" id="bg01" />
-          </div>
-          <div class="back02"><img src="../images/main/sect01-bg02.png" alt="" /></div>
-          <div class="back03"><img src="../images/main/rice01.gif" alt="" /></div>
-          <div class="back04"><img src="../images/main/rice03.gif" alt="" /></div>
+        </div>
+      </div>
+      <div class="back01" id="bg01">
+        <img src="../images/main/sect01-bg03.png" alt="" />
+      </div>
+      <div class="imgBox01">
+        <div class="img1_1">
+          <img src="../images/main/sect01-bg02.png" alt="" />
+        </div>
+        <div class="img1_2">
+          <img src="../images/main/rice01.gif" alt="" />
+        </div>
+        <div class="img1_3">
+          <img src="../images/main/rice03.gif" alt="" />
         </div>
       </div>
     </section>
@@ -105,9 +113,11 @@
               </div>
             </div>
           </div>
-          <!-- <div class="back05"><img src="../images/main/sect02-bg.png" alt="" /></div>
-          <div class="back06"><img src="../images/main/rice02.gif" alt="" /></div> -->
         </div>
+      </div>
+      <div class="back02"><img src="../images/main/sect02-bg.png" alt="" /></div>
+      <div class="imgBox02">
+        <div class="img2_1"><img src="../images/main/rice02.gif" alt="" /></div>
       </div>
     </section>
     <script>
@@ -116,9 +126,22 @@
       const beerImg = document.querySelector(".beerImg");
       const swiper = new Swiper(beerImg, {
         effect: "fade",
+        fadeEffect: {
+          crossFade: true,
+        },
         duration: 1,
         loop: true,
         slidesPerView: 1,
+        autoplay: true,
+        speed: 300,
+        navigation: {
+          nextEl: "#perchase .next",
+          prevEl: "#perchase .prev",
+        },
+        pagination: {
+          el: "#perchase .pageIdx",
+          type: "fraction",
+        },
       });
 
       const header = document.querySelector("#header");
@@ -127,11 +150,11 @@
       window.addEventListener("scroll", function (e) {
         const scrollY = window.scrollY;
         e.preventDefault();
-        if (scrollY > 0) {
+        if (scrollY > 70) {
           header.classList.add("headerScroll");
           main.classList.add("mainScroll");
           bg01.classList.add("active");
-        } else {
+        } else if (scrollY <= 70) {
           header.classList.remove("headerScroll");
           main.classList.remove("mainScroll");
           bg01.classList.remove("active");

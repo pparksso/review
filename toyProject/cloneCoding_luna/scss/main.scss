@@ -82,15 +82,17 @@ section {
 #main {
   height: calc(100vh - 180px);
   // padding-top: 180px;
+  // height: 100vh;
   position: relative;
   background-image: url("../images/main/sect01-bg.png");
   background-size: 4500px auto;
   background-repeat: no-repeat;
   background-position: 50% calc(100% + 300px);
   &.mainScroll {
-    padding-top: 180px;
+    margin-top: 180px;
   }
   .inner {
+    height: 100%;
     position: relative;
     .mainTxtBox {
       min-height: 660px;
@@ -100,66 +102,76 @@ section {
       position: relative;
       z-index: 1;
     }
-    .back01 {
+  }
+  .back01 {
+    position: absolute;
+    z-index: -99;
+    top: -45%;
+    left: -11%;
+    transition: all 0.7s ease;
+    &.active {
+      top: 0;
+    }
+    img {
+      width: 60%;
+    }
+  }
+  .imgBox01 {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 100%;
+    right: 0;
+    z-index: 0;
+    .img1_1 {
+      position: absolute;
+      bottom: 13%;
+      right: -7%;
+      z-index: 3;
       img {
-        width: 600px;
-        position: absolute;
-        z-index: -3;
-        top: -150px;
-        left: -250px;
-        transition: all 0.5s ease-in-out;
-        &.active {
-          top: -100px;
-        }
+        width: 65%;
       }
     }
-    .back02 {
+    .img1_2 {
+      position: absolute;
+      top: 10%;
+      right: -5%;
+      z-index: 2;
       img {
-        width: 670px;
-        position: absolute;
-        top: -8%;
-        right: 31%;
+        width: 50%;
       }
     }
-    .back03 {
+    .img1_3 {
+      position: absolute;
+      top: 30%;
+      right: -12%;
+      z-index: 1;
       img {
-        width: 25vw;
-        position: absolute;
-        top: -25%;
-        right: 32%;
-        z-index: -2;
-      }
-    }
-    .back04 {
-      img {
-        width: 10vw;
-        position: absolute;
-        top: 10%;
-        right: 25%;
-        z-index: -1;
+        width: 40%;
       }
     }
   }
 }
 #perchase {
+  position: relative;
   .container {
     padding: 350px 0 240px 0;
     max-height: 100%;
     .inner {
+      position: relative;
       .prechaseWrap {
         position: relative;
         display: flex;
-        max-height: 100%;
         justify-content: center;
+        transform: translateX(-2%);
         .beerImg {
-          flex-basis: 39%;
           margin: 0;
           ul {
+            width: 560px;
             li {
-              width: 485px;
-              max-height: 500px;
               img {
-                width: 100%;
+                width: 560px;
                 overflow: hidden;
               }
             }
@@ -189,18 +201,35 @@ section {
           }
           .page {
             display: flex;
+            margin-top: 75px;
+            .pageIdx {
+              width: auto;
+              .swiper-pagination-total {
+                display: inline-block;
+                font-size: 16px;
+                font-weight: 500;
+                margin: 10px 0 0 3px;
+              }
+              .swiper-pagination-current {
+                font-size: 23px;
+                font-weight: 700;
+                margin-right: 7px;
+              }
+            }
             .pagination {
+              margin-left: 55px;
               button {
                 outline: none;
                 border: none;
                 background: none;
                 width: auto;
                 height: auto;
-                cursor: pointer;
                 &.prev {
                   transition: all 0.3s ease-in-out;
+                  padding: 0;
                   &:after {
                     content: "\f1e6";
+                    cursor: pointer;
                     font-family: "Material Icons";
                     font-size: 30px;
                     font-weight: 100;
@@ -210,9 +239,12 @@ section {
                   }
                 }
                 &.next {
+                  margin-left: 30px;
                   transition: all 0.3s ease-in-out;
+                  padding: 0;
                   &:after {
                     content: "\f1df";
+                    cursor: pointer;
                     font-family: "Material Icons";
                     font-size: 30px;
                     font-weight: 100;
@@ -226,6 +258,32 @@ section {
           }
         }
       }
+    }
+  }
+  .imgBox02 {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 100%;
+    left: 0;
+    z-index: 0;
+    .img2_1 {
+      position: absolute;
+      // bottom: 8%;
+      // right: -20%;
+      img {
+        width: 50%;
+      }
+    }
+  }
+  .back02 {
+    position: absolute;
+    top: 0;
+    right: -20%;
+    z-index: -1;
+    img {
+      width: 50%;
     }
   }
 }
