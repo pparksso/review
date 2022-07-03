@@ -33,24 +33,46 @@ userWord.addEventListener("keyup", function (e) {
 */
 
 // API사용 끝말잇기
+
 startBtn.addEventListener("click", function (e) {
   e.preventDefault();
   let randomRelayWord = relayWords[Math.floor(Math.random() * relayWords.length)];
   relayWordBox.innerHTML = `${randomRelayWord}`;
 });
 
-const apiKey = "E082F509B7B5258CD2A0FDA6515BA4CB";
-userWord.addEventListener("keyup", function (e) {
-  if (e.keyCode === 13) {
-    const uValue = userWord.value;
-    const startStr = uValue.charAt(0);
-    fetch(`https://stdict.korean.go.kr/api/search.do?key=${apiKey}&req_type=json&q=${startStr}&advanced=y&type1=word&method=start&num=100`)
-      .then((res) => {
-        return res.text();
-      })
-      .then((data) => {});
+// userWord.addEventListener("keydown", function (e) {
+//   if (e.keyCode === 13) {
+//     const uValue = userWord.value;
+//     const startStr = uValue.charAt(0);
+//     fetch("https://stdict.korean.go.kr/api/search.do", {
+//       key: "E082F509B7B5258CD2A0FDA6515BA4CB",
+//       q: startStr,
+//     })
+//       .then((res) => {
+//         return res.json();
+//       })
+//       .then((data) => {
+//         console.log(data);
+//       });
 
-    userWord.value = "";
-    userWord.focus();
-  }
-});
+//     userWord.value = "";
+//     userWord.focus();
+//   }
+// });
+fetch("https://opendict.korean.go.kr/api/search", {
+  method: "get",
+  headers: {
+    key: "83384F32652E8297A02BA5B7A3299EBB",
+    req_type: "json",
+  },
+  body: {
+    q: "나무",
+    advanced: "y",
+  },
+})
+  .then(function (response) {
+    response.json();
+  })
+  .then(function (data) {
+    console.log(item.word);
+  });

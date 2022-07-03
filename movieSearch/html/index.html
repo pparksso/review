@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" />
+    <title>MOVIE</title>
+    <!-- favicon -->
+
+    <!-- reset -->
+    <link rel="stylesheet" href="../css/reset.css" />
+
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet" />
+
+    <!-- css -->
+    <link rel="stylesheet" href="../css/aos.css" />
+    <link rel="stylesheet" href="../css/splitting.css" />
+    <link rel="stylesheet" href="../css/swiper-bundle.min.css" />
+
+    <!-- local css -->
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/layout.css" />
+    <!-- js -->
+    <script src="../js/aos.js"></script>
+    <script src="../js/gsap.min.js"></script>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script src="../js/splitting.js"></script>
+    <script src="../js/swiper-bundle.min.js"></script>
+    <script src="../js/dayjs.min.js"></script>
+    <script src="../js/fancybox.umd.js"></script>
+    <script src="../js/imagesloaded.pkgd.min.js"></script>
+    <script src="../js/isotope.pkgd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <section id="main">
+      <div class="bodyLeft">
+        <div class="now"></div>
+        <div class="boxofficeWrap">
+          <div class="boxOfficeDate"></div>
+          <ul class="boxofficeList"></ul>
+        </div>
+      </div>
+      <div class="container">
+        <div class="header">
+          <div class="searchArea">
+            <div class="searchBar">
+              <button><span class="material-icons"> search </span></button><input type="text" name="" id="search" placeholder="Search for a movie" />
+            </div>
+          </div>
+          <div class="filterArea">
+            <ul class="filterBar">
+              <li data-filter="10770" class="genre"><span># TV 영화</span></li>
+              <li data-filter="10751" class="genre"><span># 가족</span></li>
+              <li data-filter="878" class="genre"><span># SF</span></li>
+              <li data-filter="27" class="genre"><span># 공포</span></li>
+              <li data-filter="99" class="genre"><span># 다큐멘터리</span></li>
+              <li data-filter="18" class="genre"><span># 드라마</span></li>
+              <li data-filter="10749" class="genre"><span># 로맨스</span></li>
+              <li data-filter="12" class="genre"><span># 모험</span></li>
+              <li data-filter="9648" class="genre"><span># 미스터리</span></li>
+              <li data-filter="80" class="genre"><span># 범죄</span></li>
+              <li data-filter="37" class="genre"><span># 서부</span></li>
+              <li data-filter="53" class="genre"><span># 스릴러</span></li>
+              <li data-filter="16" class="genre"><span># 애니메이션</span></li>
+              <li data-filter="28" class="genre"><span># 액션</span></li>
+              <li data-filter="36" class="genre"><span># 역사</span></li>
+              <li data-filter="10420" class="genre"><span># 음악</span></li>
+              <li data-filter="10752" class="genre"><span># 전쟁</span></li>
+              <li data-filter="35" class="genre"><span># 코미디</span></li>
+              <li data-filter="14" class="genre"><span># 판타지</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="moviePannel">
+          <div class="pannelTitle"></div>
+          <div class="movieWrap">
+            <div class="movieListWrap">
+              <ul class="movieList"></ul>
+            </div>
+            <div class="searchError"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+  <script>
+    const search = document.querySelector("#search");
+    const searchBtn = document.querySelector(".searchBar button");
+    const movieList = document.querySelector(".movieList");
+    const pannelTitle = document.querySelector(".pannelTitle");
+    const movieListWrap = document.querySelector(".movieListWrap");
+    const nowBox = document.querySelector("#main .now");
+    const genreList = document.querySelectorAll("#main .genre");
+    const moviePannel = document.querySelector(".moviePannel");
+    const boxofficeList = document.querySelector(".boxofficeList");
+    const boxOfficeDate = document.querySelector(".boxOfficeDate");
+    const searchError = document.querySelector(".searchError");
+    const weeklyArr = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+
+    function clock() {
+      const today = new Date();
+      const year = today.getFullYear();
+      const month = today.getMonth() + 1;
+      const date = today.getDate();
+      const day = today.getDay();
+      const hour = String(today.getHours()).padStart(2, "0");
+      const min = String(today.getMinutes()).padStart(2, "0");
+      const sec = String(today.getSeconds()).padStart(2, "0");
+      let week = "";
+      switch (day) {
+        case 1:
+          week = weeklyArr[1];
+          break;
+        case 2:
+          week = weeklyArr[2];
+          break;
+        case 3:
+          week = weeklyArr[3];
+          break;
+        case 4:
+          week = weeklyArr[4];
+          break;
+        case 5:
+          week = weeklyArr[5];
+          break;
+        case 6:
+          week = weeklyArr[6];
+          break;
+        case 0:
+          week = weeklyArr[7];
+          break;
+      }
+      nowBox.innerHTML = `<div class="today">
+            <span class="year">${year}. </span><span class="month">${month}. </span><span class="date">${date}. </span>
+            <span class="day">${week}</span>
+          </div>
+          <div class="clock">
+            <span class="hour">${hour} : </span>
+            <span class="min">${min} : </span>
+            <span class="sec">${sec}</span>
+          </div>`;
+    }
+    setInterval(clock, 1000);
+
+    const today = new Date();
+    const yearSt = String(today.getFullYear());
+    const monthSt = String(today.getMonth() + 1).padStart(2, "0");
+    const dateSt = String(today.getDate() - 1).padStart(2, "0");
+    axios.get(`http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=f023d91bcc33066e08a3d52e4dd8cb72&targetDt=${yearSt}${monthSt}${dateSt}`).then((res) => {
+      const boxOfficeResult = res.data.boxOfficeResult.dailyBoxOfficeList;
+      let tempHtml = "";
+      for (let i = 0; i < boxOfficeResult.length; i++) {
+        let rankIntenIcon = "";
+        if (boxOfficeResult[i].rankInten == 0) {
+          rankIntenIcon = `<span class="material-icons rankInten0">remove</span>`;
+        } else if (boxOfficeResult[i].rankInten >= 1) {
+          rankIntenIcon = `<span class="material-icons rankInten1" style = "color:#005eff">arrow_drop_up</span>`;
+        } else if (boxOfficeResult[i].rankInten < 0) {
+          rankIntenIcon = `<span class="material-icons rankInten2" style = "color:#f00">arrow_drop_down</span>`;
+        }
+        tempHtml += `<li class=boxList${i}>
+              <div class="wrap3d">
+                <div class="boxItem">${rankIntenIcon}<span class="rank">${boxOfficeResult[i].rank}</span><h2 class="movieNm">${boxOfficeResult[i].movieNm}</h2></div>
+                <p class="openDt">${boxOfficeResult[i].openDt}</p>
+                <p class="audiAcc">${boxOfficeResult[i].audiAcc}<span>명</span></p>
+              </div>
+            </li>`;
+      }
+      boxofficeList.innerHTML += tempHtml;
+      gsap.to(".boxofficeList li", {
+        duration: 1,
+        rotateX: 90,
+        ease: "power1.inOut",
+        stagger: {
+          grid: "auto",
+          from: "end",
+          amount: 1.5,
+          ease: "none",
+        },
+      });
+    });
+
+    boxOfficeDate.innerHTML = `<p>${yearSt}. ${monthSt}. ${dateSt} Boxoffice⭐</p>`;
+    let genreArr = [];
+    const popular = "popular";
+
+    const getAxios = function (word) {
+      axios.get(`https://api.themoviedb.org/3/movie/${word}?api_key=bd6b0d7dd24ac095a983ad99815d51d5&page=3&language=ko-KR`).then((response) => {
+        const dataResults = response.data.results;
+
+        const imgPath = "https://image.tmdb.org/t/p/w300";
+
+        let tempHtml = "";
+        for (let i = 0; i < dataResults.length; i++) {
+          tempHtml += `  <li class="item" data-filter="${dataResults[i].genre_ids}">
+              <a href="">
+                <div class="imgBox">
+                  <img src="${imgPath + dataResults[i].poster_path}" alt="">
+                  <div class="info">
+                    <h2>${dataResults[i].title}</h2>
+                    <p class="desc">${dataResults[i].overview}</p>
+                    <p class="release"><span class="dt">Release :</span> ${dataResults[i].release_date}</p>
+                    <p class="vote"><span class="dt">Rating : </span>${dataResults[i].vote_average}</p>
+                  </div>
+                </div>
+              </a>
+            </li>`;
+        }
+        movieList.innerHTML += tempHtml;
+        $(".movieList")
+          .imagesLoaded()
+          .always(function () {
+            pannelTitle.innerHTML = `<h1>👏 Today's popular</h1>`;
+            gsap.to(".moviePannel", {
+              opacity: 1,
+              duration: 2,
+            });
+          });
+
+        const items = document.querySelectorAll(".item");
+
+        // const iso = new Isotope(".movieListWrap", {
+        //   itemSelector: ".movieList",
+        //   layoutMode: "masonry",
+        // });
+        genreList.forEach(function (item, index) {
+          item.addEventListener("click", function () {
+            item.classList.toggle("on");
+            const filterValue = item.getAttribute("data-filter");
+            const movieLists = document.querySelectorAll(".movieList li");
+            movieLists.forEach(function (item2, index) {
+              const genreCode = item2.getAttribute("data-filter");
+              if (filterValue == genreCode) {
+                iso.arrange({ filter: genreCode });
+              }
+            });
+          });
+        });
+      });
+    };
+    getAxios(popular);
+    search.focus();
+
+    const searchMovie = function () {
+      let searchVal = search.value;
+      movieList.innerHTML = "";
+      pannelTitle.innerHTML = "";
+      moviePannel.style = "";
+      axios.get(`https://api.themoviedb.org/3/search/movie?language=ko-KR&api_key=bd6b0d7dd24ac095a983ad99815d51d5&query=${searchVal}&include_adult=false`).then((response) => {
+        const dataResults = response.data.results;
+        const imgPath = "https://image.tmdb.org/t/p/w300";
+        console.log(response);
+        if (dataResults.length < 1) {
+          moviePannel.style.opacity = 1;
+          movieList.classList.add("notMovie");
+          searchError.classList.add("notMovie");
+          searchError.innerHTML = `<h1>No Movies found for <p>'${searchVal}'</p></h1>`;
+        } else if (dataResults.length >= 1) {
+          searchError.innerHTML = "";
+          searchError.classList.remove("notMovie");
+          movieList.classList.remove("notMovie");
+          let tempHtml = "";
+          for (let i = 0; i < dataResults.length; i++) {
+            tempHtml += `  <li class="item" data-filter="${dataResults[i].genre_ids}">
+                <a href="">
+                  <div class="imgBox">
+                    <img src="${imgPath + dataResults[i].poster_path}" alt="">
+                    <div class="info">
+                      <h2>${dataResults[i].title}</h2>
+                      <p class="desc">${dataResults[i].overview}</p>
+                      <p class="release"><span class="dt">Release :</span> ${dataResults[i].release_date}</p>
+                      <p class="vote"><span class="dt">Rating : </span>${dataResults[i].vote_average}</p>
+                    </div>
+                  </div>
+                </a>
+              </li>`;
+          }
+          movieList.innerHTML += tempHtml;
+          $(".movieList")
+            .imagesLoaded()
+            .always(function () {
+              pannelTitle.innerHTML = `<h1>🔍 Search results</h1>`;
+              gsap.to(".moviePannel", {
+                opacity: 1,
+                duration: 2,
+              });
+            });
+        }
+      });
+    };
+
+    search.addEventListener("keydown", function (e) {
+      if (e.keyCode === 13) {
+        searchMovie();
+      }
+    });
+    searchBtn.addEventListener("click", function () {
+      searchMovie();
+    });
+  </script>
+</html>
