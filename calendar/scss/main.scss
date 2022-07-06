@@ -86,13 +86,16 @@ a {
         }
         .todoList {
           padding: 0 150px 0 10px;
+          height: 150px;
+          overflow-y: hidden;
           li {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            margin-bottom: 15px;
             span {
               display: flex;
-              cursor: pointer;
+              user-select: none;
               align-items: center;
               &.check {
                 text-decoration: line-through;
@@ -189,6 +192,8 @@ a {
               }
               &.off {
                 span {
+                  user-select: none;
+                  cursor: default;
                   color: darken(#ddaf35, 10);
                   &:hover {
                     background-color: #ddaf35;

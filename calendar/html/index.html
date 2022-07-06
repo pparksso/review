@@ -39,9 +39,7 @@
               <input type="text" name="" id="todoWrite" placeholder="please write here!!" />
               <button class="todoBtn"><span>INPUT</span></button>
             </div>
-            <ul class="todoList">
-              <li><span>공부하기</span><button class="xBtn">X</button></li>
-            </ul>
+            <ul class="todoList"></ul>
           </div>
         </div>
         <div class="right">
@@ -76,6 +74,9 @@
     const date = document.querySelector(".right .date");
     const preBtn = document.querySelector(".right .prevBtn");
     const nextBtn = document.querySelector(".right .nextBtn");
+    const todoWrite = document.querySelector("#todoWrite");
+    const todoBtn = document.querySelector(".todoBtn");
+    const todoList = document.querySelector(".todoList");
 
     const monthlyArr = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     const weeklyArr = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -131,8 +132,12 @@
     const siblingsList = function () {
       let dateList = document.querySelectorAll(".right .date li");
       siblings = [...dateList];
+
       siblings.forEach(function (item) {
         item.addEventListener("click", function () {
+          if (item.classList.contains("off")) {
+            return false;
+          }
           siblings.forEach(function (item2) {
             item2.classList.remove("click");
           });
@@ -161,5 +166,75 @@
       showyear.innerHTML = `${current.getFullYear()}`;
       showMonth.innerHTML = `${monthlyArr[current.getMonth()]}`;
     });
+
+    let todoEl = "";
+    const todoListMaker = function () {
+      let doItValue = todoWrite.value;
+      let todoYear = current.getFullYear();
+      let todoMonth = current.getMonth();
+      let clickDate = document.querySelector(".right .date .click");
+      if (clickDate === null) {
+        window.localStorage.setItem(`todo${todayYear}/${todayMonth}/${todayDate}`, [JSON.stringify(doItValue)]);
+        todoEl = JSON.parse(localStorage.getItem(`todo${todayYear}/${todayMonth}/${todayDate}`));
+      } else {
+        let clickDateEl = clickDate.getAttribute("data-date");
+        window.localStorage.setItem(`todo${todoYear}/${todoMonth}/${clickDateEl}`, [JSON.stringify(doItValue)]);
+        todoEl = JSON.parse(localStorage.getItem(`todo${todoYear}/${todoMonth}/${clickDateEl}`));
+      }
+      todoList.innerHTML += `<li class = "todoListEl"><span class = "todoItem">${todoEl}</span><button class="xBtn">X</button></li>`;
+
+      const xBtns = document.querySelectorAll(".xBtn");
+      xBtns.forEach(function (item, idex) {
+        item.addEventListener("click", function () {
+          item.parentNode.style.display = "none";
+        });
+      });
+
+      const todoItems = document.querySelectorAll(".todoItem");
+      todoItems.forEach(function (item, idx) {
+        item.addEventListener("click", function () {
+          item.classList.toggle("check");
+        });
+      });
+    };
+
+    //처음 로드 됐을 때 상태
+    const todoListEls = document.querySelectorAll(".todoListEl");
+    if (todoListEls.length === 0) {
+      false;
+    } else {
+      todoEl = JSON.parse(localStorage.getItem(`todo${todayYear}/${todayMonth}/${todayDate}`));
+      todoList.innerHTML += `<li class = "todoListEl"><span class = "todoItem">${todoEl}</span><button class="xBtn">X</button></li>`;
+    }
+    const xBtns = document.querySelectorAll(".xBtn");
+    xBtns.forEach(function (item, idex) {
+      item.addEventListener("click", function () {
+        item.parentNode.style.display = "none";
+      });
+    });
+
+    todoBtn.addEventListener("click", function () {
+      if (todoWrite.value === "") {
+        false;
+      } else {
+        todoListMaker();
+        todoWrite.value = "";
+      }
+    });
+
+    window.addEventListener("keydown", function (e) {
+      if (e.keyCode === 13) {
+        if (todoWrite.value === "") {
+          false;
+        } else {
+          todoListMaker();
+          todoWrite.value = "";
+        }
+      }
+    });
+
+    //날짜마다 따로 저장, 불러오기
+    //xBtn으로 삭제 시 로컬스토리지에서도 삭제
+    // 같은 날짜 배열로 만들기...
   </script>
 </html>

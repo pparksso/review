@@ -87,15 +87,18 @@ a {
 }
 #main #calendar .left .todoListWrap .todoList {
   padding: 0 150px 0 10px;
+  height: 150px;
+  overflow-y: hidden;
 }
 #main #calendar .left .todoListWrap .todoList li {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 15px;
 }
 #main #calendar .left .todoListWrap .todoList li span {
   display: flex;
-  cursor: pointer;
+  user-select: none;
   align-items: center;
 }
 #main #calendar .left .todoListWrap .todoList li span.check {
@@ -190,6 +193,8 @@ a {
   padding-top: 70%;
 }
 #main #calendar .right .calendarWrap .cBody .date li.off span {
+  user-select: none;
+  cursor: default;
   color: #bf9320;
 }
 #main #calendar .right .calendarWrap .cBody .date li.off span:hover {

@@ -95,7 +95,7 @@
     const pannelTitle = document.querySelector(".pannelTitle");
     const movieListWrap = document.querySelector(".movieListWrap");
     const nowBox = document.querySelector("#main .now");
-    const genreList = document.querySelectorAll("#main .genre");
+    const genreList = document.querySelectorAll("#main .filterBar .genre");
     const moviePannel = document.querySelector(".moviePannel");
     const boxofficeList = document.querySelector(".boxofficeList");
     const boxOfficeDate = document.querySelector(".boxOfficeDate");
@@ -111,33 +111,10 @@
       const hour = String(today.getHours()).padStart(2, "0");
       const min = String(today.getMinutes()).padStart(2, "0");
       const sec = String(today.getSeconds()).padStart(2, "0");
-      let week = "";
-      switch (day) {
-        case 1:
-          week = weeklyArr[1];
-          break;
-        case 2:
-          week = weeklyArr[2];
-          break;
-        case 3:
-          week = weeklyArr[3];
-          break;
-        case 4:
-          week = weeklyArr[4];
-          break;
-        case 5:
-          week = weeklyArr[5];
-          break;
-        case 6:
-          week = weeklyArr[6];
-          break;
-        case 0:
-          week = weeklyArr[7];
-          break;
-      }
+      const weekArr = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
       nowBox.innerHTML = `<div class="today">
             <span class="year">${year}. </span><span class="month">${month}. </span><span class="date">${date}. </span>
-            <span class="day">${week}</span>
+            <span class="day">${weekArr[day]}</span>
           </div>
           <div class="clock">
             <span class="hour">${hour} : </span>
@@ -186,7 +163,6 @@
     });
 
     boxOfficeDate.innerHTML = `<p>${yearSt}. ${monthSt}. ${dateSt} Boxoffice⭐</p>`;
-    let genreArr = [];
     const popular = "popular";
 
     const getAxios = function (word) {
@@ -197,7 +173,7 @@
 
         let tempHtml = "";
         for (let i = 0; i < dataResults.length; i++) {
-          tempHtml += `  <li class="item" data-filter="${dataResults[i].genre_ids}">
+          tempHtml += `  <li id="item" data-filter="${dataResults[i].genre_ids}">
               <a href="">
                 <div class="imgBox">
                   <img src="${imgPath + dataResults[i].poster_path}" alt="">
@@ -212,6 +188,15 @@
             </li>`;
         }
         movieList.innerHTML += tempHtml;
+        const items = document.querySelectorAll(".movieList #item");
+        items.forEach(function (item) {
+          let itemArr = [];
+          itemArr.push(item.dataset.filter);
+
+          const itemFilter = item.dataset.filter.replace(/,/g, " ");
+          console.log(itemFilter);
+          // item.classList.add(itemFilter);
+        });
         $(".movieList")
           .imagesLoaded()
           .always(function () {
@@ -221,26 +206,6 @@
               duration: 2,
             });
           });
-
-        const items = document.querySelectorAll(".item");
-
-        // const iso = new Isotope(".movieListWrap", {
-        //   itemSelector: ".movieList",
-        //   layoutMode: "masonry",
-        // });
-        genreList.forEach(function (item, index) {
-          item.addEventListener("click", function () {
-            item.classList.toggle("on");
-            const filterValue = item.getAttribute("data-filter");
-            const movieLists = document.querySelectorAll(".movieList li");
-            movieLists.forEach(function (item2, index) {
-              const genreCode = item2.getAttribute("data-filter");
-              if (filterValue == genreCode) {
-                iso.arrange({ filter: genreCode });
-              }
-            });
-          });
-        });
       });
     };
     getAxios(popular);
@@ -266,7 +231,7 @@
           movieList.classList.remove("notMovie");
           let tempHtml = "";
           for (let i = 0; i < dataResults.length; i++) {
-            tempHtml += `  <li class="item" data-filter="${dataResults[i].genre_ids}">
+            tempHtml += `  <li id="item" data-filter="${dataResults[i].genre_ids}">
                 <a href="">
                   <div class="imgBox">
                     <img src="${imgPath + dataResults[i].poster_path}" alt="">
@@ -302,5 +267,23 @@
     searchBtn.addEventListener("click", function () {
       searchMovie();
     });
+
+    const filterStart = function () {
+      const items = document.querySelectorAll(".movieList #item");
+
+      genreList.forEach(function (i, idx) {
+        i.addEventListener("click", function () {
+          i.classList.toggle("on");
+          const BtnFilter = e.target.dataset.filter;
+          items.forEach(function (item) {
+            if (item.classList.contains(BtnFilter)) {
+              item.style.display = "block";
+            } else {
+              item.style.display = "none";
+            }
+          });
+        });
+      });
+    };
   </script>
 </html>
